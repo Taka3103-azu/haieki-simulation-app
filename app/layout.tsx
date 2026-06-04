@@ -6,7 +6,10 @@ export const metadata = {
   description: "Display current time",
 };
 
-export default function RootLayout({ children }) {
+import { ReactNode } from "react";
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+
   return (
     <html lang="ja">
       <body>
