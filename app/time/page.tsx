@@ -1,7 +1,3 @@
-
-
-import { useState } from "react";
-
 export default function TimePage() {
   const [now, setNow] = useState("");
 
@@ -13,6 +9,7 @@ export default function TimePage() {
   return (
     <div style={{ padding: "40px", fontSize: "20px" }}>
       <h1>現在の日時を表示するアプリ</h1>
+
       <button
         onClick={showTime}
         style={{
