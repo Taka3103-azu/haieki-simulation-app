@@ -108,7 +108,8 @@ const [wastePurchaseCost, setWastePurchaseCost] = useState(0);
 
 const [buyProfit, setBuyProfit] = useState(0);
 
-
+const [buyCalculated, setBuyCalculated] = useState(false);
+const [sellCalculated, setSellCalculated] = useState(false);
 
 const [inorganicDensity, setInorganicDensity] = useState("");
 const [inorganicConcentration, setInorganicConcentration] = useState("");
@@ -223,7 +224,7 @@ transportAnalysis;
 
 setFinalProfit(profit);
 
-
+setSellCalculated(true);
 };
 
 
@@ -269,6 +270,8 @@ const profit =
   );
 
 setBuyProfit(profit);
+
+setBuyCalculated(true);
 };
 
   return (
@@ -611,7 +614,7 @@ setBuyProfit(profit);
     計算する
   </button>
 </div>
-
+{buyCalculated && (
 <div
   style={{
     marginTop: "20px",
@@ -633,119 +636,48 @@ setBuyProfit(profit);
     <p style={{ fontSize: "28px", fontWeight: "700", color: "#1B5E20" }}>
       {availableCarbon.toLocaleString()} kg
     </p>
-    <div style={formulaStyle}>
-  式：
-  BOD濃度（{buyBod} mg/L）
-  ÷ 1000
-  × ロット量（{buyLot} m³）
-</div>
-
-</div>
-
-<div style={sellCardStyle}>
-  <h3>代替可能炭素量</h3>
-
-  <p style={{ fontSize: "28px", fontWeight: "700", color: "#1B5E20" }}>
-    {replaceableCarbon.toLocaleString()} kg
-  </p>
-
-  <div style={formulaStyle}>
-    式：
-    MIN(
-    必要炭素量（{requiredCarbon} kg/月）,
-    廃液由来炭素量（{availableCarbon.toLocaleString()} kg）
-    )
   </div>
-</div>
 
+  <div style={sellCardStyle}>
+    <h3>代替可能炭素量</h3>
+    <p style={{ fontSize: "28px", fontWeight: "700", color: "#1B5E20" }}>
+      {replaceableCarbon.toLocaleString()} kg
+    </p>
+  </div>
 
   <div style={reductionCardStyle}>
     <h3>炭素源購入費削減額</h3>
     <p style={{ fontSize: "28px", fontWeight: "700", color: "#1B5E20" }}>
       {carbonSaving.toLocaleString()} 円
     </p>
-    <div style={formulaStyle}>
-  式：
-  代替可能炭素量（{replaceableCarbon.toLocaleString()} kg）
-  ×
-  炭素源単価（{carbonPrice} 円/kg）
-</div>
   </div>
 
   <div style={costCardStyle}>
-  <h3>運搬費</h3>
-
-  <p style={{ fontSize: "28px", fontWeight: "700", color: "#B71C1C" }}>
-    {buyTransportCost.toLocaleString()} 円
-  </p>
-
-  <div style={formulaStyle}>
-    式：
-    運搬費単価（{buyTransport} 円/m³）
-    ×
-    ロット量（{buyLot} m³）
+    <h3>運搬費</h3>
+    <p style={{ fontSize: "28px", fontWeight: "700", color: "#B71C1C" }}>
+      {buyTransportCost.toLocaleString()} 円
+    </p>
   </div>
 
-</div>
- <div style={costCardStyle}>
-  <h3>分析費</h3>
-
-  <p style={{ fontSize: "28px", fontWeight: "700", color: "#B71C1C" }}>
-    {Number(buyAnalysis).toLocaleString()} 円
-  </p>
-
-  <div style={formulaStyle}>
-    式：
-    入力した分析費
-    （{Number(buyAnalysis).toLocaleString()} 円）
+  <div style={costCardStyle}>
+    <h3>廃液購入費</h3>
+    <p style={{ fontSize: "28px", fontWeight: "700", color: "#B71C1C" }}>
+      {wastePurchaseCost.toLocaleString()} 円
+    </p>
   </div>
-</div>
 
-  
-    <div style={costCardStyle}>
-  
-<h3>廃液購入費</h3>
-  <p style={{ fontSize: "28px", fontWeight: "700", color: "#B71C1C" }}>
-    {wastePurchaseCost.toLocaleString()} 円
-  </p>
-<div style={formulaStyle}>
-  式：
-  廃液購入単価（{wastePurchasePrice} 円/m³）
-  ×
-  ロット量（{buyLot} m³）
-</div>
-  
-</div>
-  
-
-  <div
-  style={{
-    ...finalProfitCardStyle,
-    gridColumn: "1 / 3",
-  }}
->
+  <div style={finalProfitCardStyle}>
     <h3>純利益</h3>
     <p style={{ fontSize: "32px", fontWeight: "800", color: "#F57F17" }}>
       {buyProfit.toLocaleString()} 円
     </p>
-    <div style={formulaStyle}>
-  式：
-  炭素源購入費削減額（{carbonSaving.toLocaleString()} 円）
-  −
-  運搬費（{buyTransportCost.toLocaleString()} 円）
-  −
-  分析費（{Number(buyAnalysis).toLocaleString()} 円）
-  −
-  廃液購入費（{wastePurchaseCost.toLocaleString()} 円）
+ </div>
+
 </div>
-
-</div>   {/* finalProfitCardStyle終了 */}
-</div>   {/* grid終了 */}
-</div>   {/* 外枠終了 */}
-
+</div>
+)}
 </>
 )}
-  
 
 {activeTab === "sell" && (
 <>
@@ -768,6 +700,8 @@ setBuyProfit(profit);
   </button>
 </div>
      {/* ★ 計算結果（数字を大きく） */}
+    {sellCalculated && ( 
+      
 <div
   style={{
     display: "grid",
@@ -836,11 +770,12 @@ setBuyProfit(profit);
       −（運搬費 + 分析費）（{transportAnalysisTotal.toLocaleString()} 円）
     </div>
   </div>
-</div>  {/* ← ★ この閉じタグが抜けていた！ */}
+</div>  
+
+)}
 </>
 )}
-
-
     </div>
+    
   );
 }

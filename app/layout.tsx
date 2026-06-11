@@ -13,8 +13,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
       <body>
-        {/* メニューバー */}
-        <nav style={{
+        {/* 
+       <nav style={{
           padding: "12px 20px",
           background: "#f0f0f0",
           borderBottom: "1px solid #ccc"
@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Link href="/contact" style={{ marginRight: 20 }}>Contact</Link>
           <Link href="/profile">Profile</Link>
         </nav>
-
+ */}
         {/* ページごとの内容 */}
         <main style={{ padding: 20 }}>
           {children}
