@@ -116,6 +116,11 @@ const [inorganicConcentration, setInorganicConcentration] = useState("");
 const [activeTab, setActiveTab] = useState("sell"); 
 // "sell" = 売りたい側, "buy" = 買いたい側
 
+const [buyCalculated, setBuyCalculated] = useState(false);
+const [sellCalculated, setSellCalculated] = useState(false);
+
+
+
 
 const organicPrices: Record<string, number> = {
   "グルコース": 150,
