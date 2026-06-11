@@ -2,8 +2,8 @@ import Link from "next/link";
 import "./globals.css";
 
 export const metadata = {
-  title: "My Time App",
-  description: "Display current time",
+  title: "廃液売買シミュレーター",
+  description: "有機・無機廃液の売却価値と購入メリットを試算",
 };
 
 import { ReactNode } from "react";
