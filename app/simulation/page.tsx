@@ -108,7 +108,7 @@ const [wastePurchaseCost, setWastePurchaseCost] = useState(0);
 
 const [buyProfit, setBuyProfit] = useState(0);
 
-
+const [error, setError] = useState("");
 
 const [inorganicDensity, setInorganicDensity] = useState("");
 const [inorganicConcentration, setInorganicConcentration] = useState("");
@@ -173,7 +173,31 @@ const organicPrices: Record<string, number> = {
   const [finalProfit, setFinalProfit] = useState(0);
 
  const calculate = () => {
+  // Step1 未入力チェック
+  if (!lot) {
+    setError("ロット量を入力してください");
+return;
+    
+  }
+
+  if (!disposal) {
+    alert("廃棄物処理費を入力してください");
+    return;
+  }
+
+  // Step2 0以下チェック
+  if (Number(lot) <= 0) {
+    alert("ロット量は0より大きい値を入力してください");
+    return;
+  }
+
+  if (Number(disposal) <= 0) {
+    alert("廃棄物処理費は0より大きい値を入力してください");
+    return;
+  }
+
 let sale = 0;
+
 
 // 単価を直接取得
 const currentPrice =
@@ -181,21 +205,32 @@ category === "organic"
 ? organicPrices[component]
 : inorganicPrices[component];
 
+if (category === "organic" && !bod) {
+  alert("BOD濃度を入力してください");
+  return;
+}
+
+if (
+  category === "inorganic" &&
+  (!inorganicConcentration || !inorganicDensity)
+) {
+  alert("濃度と比重を入力してください");
+  return;
+}
 if (category === "organic") {
-sale =
-(Number(bod) / 1000) *
-Number(lot) *
-currentPrice;
+  sale =
+    (Number(bod) / 1000) *
+    Number(lot) *
+    currentPrice;
 }
 
 if (category === "inorganic") {
-sale =
-(Number(inorganicConcentration) / 1000) *
-Number(inorganicDensity) *
-Number(lot) *
-currentPrice;
+  sale =
+    (Number(inorganicConcentration) / 1000) *
+    Number(inorganicDensity) *
+    Number(lot) *
+    currentPrice;
 }
-
 setSellValue(sale);
 
 // 廃棄コスト削減額
@@ -228,7 +263,9 @@ transportAnalysis;
 
 setFinalProfit(profit);
 
+setSellCalculated(true);
 
+setError("");
 };
 
 
@@ -771,7 +808,22 @@ setBuyProfit(profit);
   >
     計算する
   </button>
-</div>
+  </div>
+{error && (
+  <div
+    style={{
+      color: "#D32F2F",
+      backgroundColor: "#FFEBEE",
+      border: "1px solid #EF9A9A",
+      borderRadius: "6px",
+      padding: "8px 12px",
+      marginBottom: "15px",
+      fontWeight: "600",
+    }}
+  >
+    ⚠ {error}
+  </div>
+)}
      {/* ★ 計算結果（数字を大きく） */}
 <div
   style={{
