@@ -271,6 +271,66 @@ setError("");
 
 const calculateBuy = () => {
 
+  if (!requiredCarbon) {
+        setError("必要炭素量を入力してください");
+    return;
+  }
+
+  if (!carbonPrice) {
+  setError("炭素源単価を入力してください");
+  return;
+}
+
+if (!buyBod) {
+  setError("BOD濃度を入力してください");
+  return;
+}
+
+if (!buyLot) {
+  setError("ロット量を入力してください");
+  return;
+}
+
+if (!buyTransport) {
+  setError("運搬費を入力してください");
+  return;
+}
+
+if (!wastePurchasePrice) {
+  setError("廃液購入費を入力してください");
+  return;
+}
+
+if (Number(requiredCarbon) <= 0) {
+  setError("必要炭素量は0より大きい値を入力してください");
+  return;
+}
+
+if (Number(carbonPrice) <= 0) {
+  setError("炭素源単価は0より大きい値を入力してください");
+  return;
+}
+
+if (Number(buyBod) <= 0) {
+  setError("BOD濃度は0より大きい値を入力してください");
+  return;
+}
+
+if (Number(buyLot) <= 0) {
+  setError("ロット量は0より大きい値を入力してください");
+  return;
+}
+
+if (Number(buyTransport) <= 0) {
+  setError("運搬費は0より大きい値を入力してください");
+  return;
+}
+
+if (Number(wastePurchasePrice) < 0) {
+  setError("廃液購入費は0以上を入力してください");
+  return;
+}
+
   // ① 廃液から得られる炭素量
   const available =
     (Number(buyBod) / 1000) *
@@ -311,6 +371,10 @@ const profit =
   );
 
 setBuyProfit(profit);
+
+setBuyCalculated(true);
+
+setError("");
 };
 
   return (
@@ -653,6 +717,21 @@ setBuyProfit(profit);
     計算する
   </button>
 </div>
+{error && (
+  <div
+    style={{
+      color: "#D32F2F",
+      backgroundColor: "#FFEBEE",
+      border: "1px solid #EF9A9A",
+      borderRadius: "6px",
+      padding: "8px 12px",
+      marginBottom: "15px",
+      fontWeight: "600",
+    }}
+  >
+    ⚠ {error}
+  </div>
+)}
 
 <div
   style={{
