@@ -911,7 +911,8 @@ setError("");
 
 </>
 )}
-  
+</>
+)}  
 
 {activeTab === "sell" && (
 <>
@@ -1022,12 +1023,14 @@ setError("");
  </div>
 </div>
 </>
-)}          // sellCalculated
+
+)}
 
 </>
-)}          // activeTab === "sell"
 
-</div>      // return直後の一番外側のdiv
+)}
+
+</div>
 
 );
 }
