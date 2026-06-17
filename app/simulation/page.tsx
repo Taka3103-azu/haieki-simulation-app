@@ -266,6 +266,7 @@ setFinalProfit(profit);
 setSellCalculated(true);
 
 setError("");
+
 };
 
 
@@ -945,6 +946,9 @@ setError("");
     ⚠ {error}
   </div>
 )}
+
+{sellCalculated && (
+<>
      {/* ★ 計算結果（数字を大きく） */}
 <div
   style={{
@@ -1017,8 +1021,8 @@ setError("");
 </div>  {/* ← ★ この閉じタグが抜けていた！ */}
 </>
 )}
-
-
-    </div>
+  </>
+)}
+</div>   
   );
 }
