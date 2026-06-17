@@ -733,6 +733,7 @@ setError("");
   </div>
 )}
 
+
 {activeTab === "buy" && (
 <>
 
@@ -775,7 +776,8 @@ setError("");
     ⚠ {error}
   </div>
 )}
-
+{buyCalculated && (
+  <>
 <div
   style={{
     marginTop: "20px",
@@ -1017,12 +1019,15 @@ setError("");
       ＋ 削減額（{reduction.toLocaleString()} 円）
       −（運搬費 + 分析費）（{transportAnalysisTotal.toLocaleString()} 円）
     </div>
-  </div>
-</div>  {/* ← ★ この閉じタグが抜けていた！ */}
+ </div>
+</div>
 </>
-)}
-  </>
-)}
-</div>   
-  );
+)}          // sellCalculated
+
+</>
+)}          // activeTab === "sell"
+
+</div>      // return直後の一番外側のdiv
+
+);
 }
