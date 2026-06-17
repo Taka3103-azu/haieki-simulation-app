@@ -528,7 +528,10 @@ setError("");
           <input
             type="number"
             value={bod}
-            onChange={(e) => setBod(e.target.value)}
+           onChange={(e) => {
+  setBod(e.target.value);
+  setError("");
+}}
             style={inputStyle}
           />
         </>
@@ -541,7 +544,10 @@ setError("");
           <input
             type="number"
             value={inorganicConcentration}
-            onChange={(e) => setInorganicConcentration(e.target.value)}
+            onChange={(e) => {
+  setInorganicConcentration(e.target.value);
+  setError("");
+}}
             style={inputStyle}
           />
 
@@ -549,7 +555,10 @@ setError("");
           <input
             type="number"
             value={inorganicDensity}
-            onChange={(e) => setInorganicDensity(e.target.value)}
+            onChange={(e) => {
+  setInorganicDensity(e.target.value);
+  setError("");
+}}
             style={inputStyle}
           />
         </>
@@ -560,7 +569,10 @@ setError("");
       <input
         type="number"
         value={lot}
-        onChange={(e) => setLot(e.target.value)}
+        onChange={(e) => {
+  setLot(e.target.value);
+  setError("");
+}}
         style={inputStyle}
       />
     </div>
@@ -571,7 +583,10 @@ setError("");
       <input
         type="number"
         value={disposal}
-        onChange={(e) => setDisposal(e.target.value)}
+        onChange={(e) => {
+  setDisposal(e.target.value);
+  setError("");
+}}
         style={inputStyle}
       />
 
@@ -579,7 +594,10 @@ setError("");
       <input
         type="number"
         value={transport}
-        onChange={(e) => setTransport(e.target.value)}
+        onChange={(e) => {
+  setTransport(e.target.value);
+  setError("");
+}}
         style={inputStyle}
       />
 
@@ -587,7 +605,10 @@ setError("");
       <input
         type="number"
         value={analysis}
-        onChange={(e) => setAnalysis(e.target.value)}
+        onChange={(e) => {
+  setAnalysis(e.target.value);
+  setError("");
+}}
         style={inputStyle}
       />
     </div>
@@ -631,7 +652,10 @@ setError("");
         <input
           type="number"
           value={requiredCarbon}
-          onChange={(e) => setRequiredCarbon(e.target.value)}
+          onChange={(e) => {
+  setRequiredCarbon(e.target.value);
+  setError("");
+}}
           style={inputStyle}
         />
 
@@ -639,7 +663,10 @@ setError("");
         <input
           type="number"
           value={carbonPrice}
-          onChange={(e) => setCarbonPrice(e.target.value)}
+          onChange={(e) => {
+  setCarbonPrice(e.target.value);
+  setError("");
+}}
           style={inputStyle}
         />
 
@@ -647,7 +674,10 @@ setError("");
         <input
           type="number"
           value={buyBod}
-          onChange={(e) => setBuyBod(e.target.value)}
+          onChange={(e) => {
+  setBuyBod(e.target.value);
+  setError("");
+}}
           style={inputStyle}
         />
 
@@ -655,7 +685,10 @@ setError("");
         <input
           type="number"
           value={buyLot}
-          onChange={(e) => setBuyLot(e.target.value)}
+          onChange={(e) => {
+  setBuyLot(e.target.value);
+  setError("");
+}}
           style={inputStyle}
         />
       </div>
@@ -666,7 +699,10 @@ setError("");
         <input
           type="number"
           value={buyTransport}
-          onChange={(e) => setBuyTransport(e.target.value)}
+         onChange={(e) => {
+  setBuyTransport(e.target.value);
+  setError("");
+}}
           style={inputStyle}
         />
 
@@ -674,7 +710,10 @@ setError("");
         <input
           type="number"
           value={buyAnalysis}
-          onChange={(e) => setBuyAnalysis(e.target.value)}
+          onChange={(e) => {
+  setBuyAnalysis(e.target.value);
+  setError("");
+}}
           style={inputStyle}
         />
 
@@ -682,7 +721,10 @@ setError("");
         <input
           type="number"
           value={wastePurchasePrice}
-          onChange={(e) => setWastePurchasePrice(e.target.value)}
+          onChange={(e) => {
+  setWastePurchasePrice(e.target.value);
+  setError("");
+}}
           style={inputStyle}
         />
       </div>
